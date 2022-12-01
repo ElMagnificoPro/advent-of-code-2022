@@ -1,26 +1,17 @@
 import 'dart:io';
 
 main() {
-  List input = [];
+  List input = <int>[];
   input = File('input 1.txt')
       .readAsStringSync()
-      .split('\n')
-      .map((e) => int.tryParse(e) ?? (0))
+      .split('\r\n\r\n')
+      .map((block) => block.split('\n').map((e) => int.tryParse(e) ?? (0)))
+      .map((e) => e.reduce((v, e) => v + e))
       .toList();
 
-  List elves = [];
-  num sum = 0;
-  for (var i = 0; i < input.length; i++) {
-    if (input[i] == 0) {
-      elves.add(sum);
-      sum = 0;
-    } else {
-      sum += input[i];
-    }
-  }
-  elves.add(sum);
-
-  elves.sort((a, b) => b.compareTo(a));
-  print("part 1 : " + elves[0].toString());
-  print("part 2 : " + (elves[0] + elves[1] + elves[2]).toString());
+  //print(input);
+  input.sort((a, b) => b.compareTo(a));
+  print("part 1 : " + input[0].toString());
+  print("part 2 : " +
+      input.take(3).cast<int>().reduce((v, e) => v + e).toString());
 }
