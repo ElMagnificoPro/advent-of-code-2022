@@ -2,7 +2,7 @@ import 'dart:io';
 
 main() {
   List input = <int>[];
-  input = File('input 1.txt')
+  input = File('day 1.txt')
       .readAsStringSync()
       .split('\r\n\r\n')
       .map((block) => block.split('\n').map((e) => int.tryParse(e) ?? (0)))
