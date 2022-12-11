@@ -85,13 +85,6 @@ void main() {
     ]);
   });
 
-/*
-  print(active);
-  active.sort();
-  print(active
-      .sublist(active.length - 2)
-      .reduce((value, element) => value * element));
-      */
   print(
       'part 1 : ${part1(jsonDecode(jsonEncode(items)), operations, tests, throws)}');
   print(
